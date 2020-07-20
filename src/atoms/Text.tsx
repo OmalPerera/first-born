@@ -1,10 +1,32 @@
 import React, { Component } from "react";
-import { Text } from "react-native";
+import { Text , TextProperties} from "react-native";
 import PropTypes from "prop-types";
 import { commonColors } from "../utils/color";
 import { getFontSize } from "../variables/textSizeVariables";
 
-class TextAE extends Component {
+export interface Props extends TextProperties{
+    bold: boolean,
+    color: string,
+    size: 
+        "h1" |
+        "h2" |
+        "h3" |
+        "h4" |
+        "h5" |
+        "h6" |
+        "p" |
+        "callout" |
+        "sub_heading" |
+        "footnote" |
+        "caption_big" |
+        "caption_small",
+    align: string,
+    margin: boolean, 
+}
+
+interface State{}
+
+class TextAE extends Component<Props, State> {
     render() {
         const {
             color,
@@ -43,27 +65,6 @@ class TextAE extends Component {
     }
 }
 
-TextAE.propTypes = {
-    bold: PropTypes.bool,
-    color: PropTypes.string,
-    size: PropTypes.oneOf([
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "p",
-        "callout",
-        "sub_heading",
-        "footnote",
-        "caption_big",
-        "caption_small"
-    ]),
-    align: PropTypes.string,
-    margin: PropTypes.bool,
-    ...Text.propTypes
-};
 
 TextAE.defaultProps = {
     size: "p",
